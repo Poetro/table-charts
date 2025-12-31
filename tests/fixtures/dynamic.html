@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dynamic Updates</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      button {
+        padding: 8px 16px;
+        margin: 10px 5px 0 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dynamic Table Chart</h1>
+    <button id="add-row">Add Row</button>
+    <button id="update-row">Update First Row</button>
+    <table-bar-chart id="dynamic-chart">
+      <table>
+        <caption>
+          Quarterly Performance
+        </caption>
+        <thead>
+          <tr>
+            <th>Quarter</th>
+            <th>Revenue</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr>
+            <td>Q1</td>
+            <td>10000</td>
+          </tr>
+          <tr>
+            <td>Q2</td>
+            <td>12000</td>
+          </tr>
+          <tr>
+            <td>Q3</td>
+            <td>11000</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-bar-chart>
+    <script type="module" src="/dist/table-bar-chart.js"></script>
+    <script>
+      window.__fixtureReady = true;
+      let rowCount = 4;
+
+      document.getElementById("add-row").addEventListener("click", () => {
+        const tbody = document.getElementById("table-body");
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>Q${rowCount}</td><td>${
+          8000 + rowCount * 1000
+        }</td>`;
+        tbody.appendChild(tr);
+        rowCount++;
+      });
+
+      document.getElementById("update-row").addEventListener("click", () => {
+        const firstRow = document
+          .getElementById("table-body")
+          .querySelector("tr");
+        if (firstRow) {
+          firstRow.querySelector("td:last-child").textContent = "15000";
+        }
+      });
+    </script>
+  </body>
+</html>

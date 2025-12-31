@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Custom Scale Steps</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chart with 10 Scale Steps</h1>
+    <table-bar-chart scale-steps="10">
+      <table>
+        <caption>
+          Test Scores
+        </caption>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td>87</td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td>92</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-bar-chart>
+    <script type="module" src="/dist/table-bar-chart.js"></script>
+    <script>
+      window.__fixtureReady = true;
+    </script>
+  </body>
+</html>

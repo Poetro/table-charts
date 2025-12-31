@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hide Scale Chart</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chart without Scale</h1>
+    <table-bar-chart hide-scale>
+      <table>
+        <caption>
+          Website Traffic
+        </caption>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Visits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td>1200</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>1900</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>1100</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>1600</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>2200</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-bar-chart>
+    <script type="module" src="/dist/table-bar-chart.js"></script>
+    <script>
+      window.__fixtureReady = true;
+    </script>
+  </body>
+</html>

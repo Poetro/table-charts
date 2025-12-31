@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Bar Chart Example</title>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 2rem;
+      }
+
+      h1 {
+        margin-bottom: 2rem;
+      }
+
+      .example {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      table-bar-chart {
+        --bar-background-color: steelblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Table Bar Chart Web Component Examples</h1>
+
+    <div class="example">
+      <table-bar-chart scale-steps="5">
+        <table>
+          <caption>
+            Quarterly Sales Performance
+          </caption>
+          <thead>
+            <tr>
+              <th>Quarter</th>
+              <th>Sales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Q1</td>
+              <td>$45,000</td>
+            </tr>
+            <tr>
+              <td>Q2</td>
+              <td>$62,500</td>
+            </tr>
+            <tr>
+              <td>Q3</td>
+              <td>$58,200</td>
+            </tr>
+            <tr>
+              <td>Q4</td>
+              <td>$75,800</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-bar-chart>
+
+      <table-bar-chart hide-scale>
+        <table>
+          <caption>
+            Website Visits by Page
+          </caption>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Visits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Home</td>
+              <td>5,420</td>
+            </tr>
+            <tr>
+              <td>Products</td>
+              <td>3,890</td>
+            </tr>
+            <tr>
+              <td>About</td>
+              <td>2,150</td>
+            </tr>
+            <tr>
+              <td>Contact</td>
+              <td>1,670</td>
+            </tr>
+            <tr>
+              <td>Blog</td>
+              <td>4,320</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-bar-chart>
+    </div>
+
+    <script src="dist/table-bar-chart.js"></script>
+  </body>
+</html>
