@@ -376,7 +376,7 @@ legend.label {
     // Parse Data: support label + multiple value columns
     const data = rows
       .map((row) => {
-        const cells = row.querySelectorAll("td");
+        const cells = row.querySelectorAll("td, th");
         if (cells.length < 2) return null;
 
         const label = cells[0].textContent.trim();
@@ -466,8 +466,8 @@ legend.label {
             segEl.className = `bar segment series-${sidx}`;
             segEl.type = "button";
             segEl.style.height = `${(seg.numeric / total) * 100}%`;
-            segEl.title = `${this.seriesNames[sidx] || ""}: ${seg.rawValue}`;
-            segEl.value = seg.rawValue;
+            segEl.value = `${this.seriesNames[sidx] || ""}: ${seg.rawValue}`;
+            segEl.title = segEl.value;
             outer.appendChild(segEl);
           });
 
@@ -484,8 +484,8 @@ legend.label {
             bar.id = barId;
             bar.className = `bar series-${sidx}`;
             bar.style.height = `${(v.numeric / maxValue) * 100}%`;
-            bar.value = v.rawValue;
-            bar.title = `${this.seriesNames[sidx] || ""}: ${v.rawValue}`;
+            bar.value = `${this.seriesNames[sidx] || ""}: ${v.rawValue}`;
+            bar.title = bar.value;
             bar.setAttribute("aria-posinset", sidx + 1);
             bar.setAttribute("aria-setsize", item.values.length);
             wrapper.appendChild(bar);
