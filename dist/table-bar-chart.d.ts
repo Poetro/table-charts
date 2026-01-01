@@ -1,13 +1,21 @@
 /**
+ * SeriesValue - Represents a single value within a series
+ */
+export interface SeriesValue {
+    /** The original string value from the table cell */
+    rawValue: string;
+    /** The parsed numeric value for calculations */
+    numeric: number;
+}
+
+/**
  * RowValue - Represents a single data row extracted from the table
  */
 export interface RowValue {
     /** The label for the bar (from first column) */
     label: string;
-    /** The numeric value for the bar (from second column) */
-    value: number;
-    /** The original string value from the table cell */
-    rawValue: string;
+    /** Array of values for this row (one per series) */
+    values: SeriesValue[];
 }
 
 /**
@@ -19,12 +27,30 @@ export interface RowValue {
  *   import 'table-charts';
  * </script>
  * 
- * <table-bar-chart hide-scale>
+ * <!-- Single series example -->
+ * <table-bar-chart hide-scale scale-steps="5">
  *   <table>
- *     <caption>Sales Data</caption>
+ *     <caption>Quarterly Sales</caption>
+ *     <thead>
+ *       <tr><th>Quarter</th><th>Revenue</th></tr>
+ *     </thead>
  *     <tbody>
  *       <tr><td>Q1</td><td>$1,200</td></tr>
  *       <tr><td>Q2</td><td>$1,800</td></tr>
+ *     </tbody>
+ *   </table>
+ * </table-bar-chart>
+ * 
+ * <!-- Multi-series example with stacked bars -->
+ * <table-bar-chart stacked>
+ *   <table>
+ *     <caption>Revenue by Channel</caption>
+ *     <thead>
+ *       <tr><th>Quarter</th><th>Online</th><th>Retail</th></tr>
+ *     </thead>
+ *     <tbody>
+ *       <tr><td>Q1</td><td>1200</td><td>800</td></tr>
+ *       <tr><td>Q2</td><td>1500</td><td>1200</td></tr>
  *     </tbody>
  *   </table>
  * </table-bar-chart>
@@ -53,6 +79,19 @@ export class TableBarChart extends HTMLElement {
      * ```
      */
     scaleSteps: number;
+
+    /**
+     * Whether to render bars as stacked (for multi-series tables) instead of grouped
+     * Can be set via the `stacked` attribute or this property
+     * Only applies when the table has multiple value columns (series)
+     * 
+     * @example
+     * ```javascript
+     * chart.stacked = true;  // Enable stacked mode
+     * chart.stacked = false; // Switch to grouped mode
+     * ```
+     */
+    stacked: boolean;
 }
 
 declare global {
@@ -84,6 +123,12 @@ export interface TableBarChartAttributes
      * Number of scale steps to display (minimum 2, default 4)
      */
     "scale-steps"?: number | string;
+
+    /**
+     * Render bars as stacked (for multi-series tables) instead of grouped
+     * Only applies when the table has multiple value columns (series)
+     */
+    "stacked"?: boolean | string;
 
     /**
      * CSS custom property to control the bar background color

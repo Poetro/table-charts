@@ -7,11 +7,16 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release
 - TableBarChart web component
-- Support for `hide-scale` attribute/property
-- Support for `scale-steps` attribute/property
-- Support for `--bar-background-color` CSS custom property
+- Single-series bar chart support
+- Multi-series bar chart support (grouped and stacked modes)
+- Support for `hide-scale` attribute/property to hide the scale
+- Support for `scale-steps` attribute/property to configure scale granularity
+- Support for `stacked` attribute/property to toggle between grouped and stacked bars
+- Support for `--bar-background-color` CSS custom property to customize bar colors
 - Full keyboard navigation support
 - ARIA attributes for accessibility
 - TypeScript type definitions
-- MutationObserver for reactive updates
+- MutationObserver for reactive updates when table data changes
 - Proper cleanup on component unmounting
+- Support for currency symbols and formatting in numeric values
+- Automatic value parsing (removes currency symbols, commas, etc.)
