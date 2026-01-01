@@ -30,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/poetro/table-charts.git"
+    "url": "git+https://github.com/poetro/table-charts.git"
   },
   "bugs": {
     "url": "https://github.com/poetro/table-charts/issues"
