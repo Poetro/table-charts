@@ -34,7 +34,7 @@ section {
 }
 pre {
   background: ButtonFace;
-  color: ButtonBorder;
+  color: ButtonText;
   padding: 1rem;
   border-radius: 6px;
   overflow: auto;
