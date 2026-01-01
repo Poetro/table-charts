@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>table-charts — Documentation</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>table-charts</h1>
+      <p>Convert HTML tables into accessible bar charts (Web Component)</p>
+    </header>
+
+    <main class="content">
+      <section>
+        <h2>Quick Demo</h2>
+        <p>Interactive example</p>
+        <div class="demo-controls">
+          <fieldset>
+            <label>
+              <input type="checkbox" id="stacked" />
+              Stacked bars
+            </label>
+            <p class="note">(sets the <code>stacked</code> attribute)</p>
+          </fieldset>
+          <fieldset>
+            <label>
+              <input type="checkbox" id="hide-scale" />
+              Hide scale
+            </label>
+            <p class="note">
+              (hides the scale, by setting the
+              <code>hide-scale</code> attribute)
+            </p>
+          </fieldset>
+          <fieldset>
+            <label>
+              Scale steps
+              <input
+                type="number"
+                id="scale-steps"
+                min="2"
+                max="10"
+                value="5"
+              />
+            </label>
+            <p class="note">(sets the <code>scale-steps</code> attribute)</p>
+          </fieldset>
+          <fieldset>
+            <label>
+              <input type="color" id="bar-color" />
+              Bar color
+            </label>
+            <p class="note">(customizes <code>--bar-background-color</code>)</p>
+          </fieldset>
+        </div>
+        <table-bar-chart id="demo" scale-steps="5">
+          <table>
+            <caption>
+              Quarterly Sales (demo)
+            </caption>
+            <thead>
+              <tr>
+                <th>Quarter</th>
+                <th>Online</th>
+                <th>Retail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q1</td>
+                <td>$1,200</td>
+                <td>$900</td>
+              </tr>
+              <tr>
+                <td>Q2</td>
+                <td>$1,500</td>
+                <td>$1,100</td>
+              </tr>
+              <tr>
+                <td>Q3</td>
+                <td>$1,800</td>
+                <td>$1,400</td>
+              </tr>
+              <tr>
+                <td>Q4</td>
+                <td>$2,000</td>
+                <td>$1,700</td>
+              </tr>
+            </tbody>
+          </table>
+        </table-bar-chart>
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+        <pre><code>&lt;script type="module" src="./dist/table-bar-chart.js"&gt;&lt;/script&gt;
+
+&lt;table-bar-chart stacked&gt;
+  &lt;table&gt;...&lt;/table&gt;
+&lt;/table-bar-chart&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>Attributes &amp; Properties</h2>
+        <ul>
+          <li><strong>hide-scale</strong>: hide the left scale</li>
+          <li>
+            <strong>scale-steps</strong>: number of scale ticks (min 2, default
+            4)
+          </li>
+          <li><strong>stacked</strong>: render multi-series bars stacked</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>CSS Configuration</h2>
+        <p>Customize the appearance of the chart using CSS properties:</p>
+        <ul>
+          <li>
+            <strong>height</strong>: set the chart container height (default:
+            300px)
+            <pre><code>table-bar-chart { height: 400px; }</code></pre>
+          </li>
+          <li>
+            <strong>--bar-background-color</strong>: customize the bar color
+            <pre><code>table-bar-chart { --bar-background-color: #3b82f6; }</code></pre>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Notes</h2>
+        <ul>
+          <li>
+            Place a copy of <code>dist/table-bar-chart.js</code> inside the
+            published docs (done here).
+          </li>
+          <li>
+            To publish, push this branch and enable GitHub Pages to serve from
+            the <strong>docs/</strong> folder.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">Built from the project README</footer>
+
+    <script type="module" src="./dist/table-bar-chart.js"></script>
+    <script>
+      const checkbox = document.getElementById("stacked");
+      const chart = document.getElementById("demo");
+      checkbox.addEventListener("change", (event) => {
+        if (event.target.checked) {
+          chart.setAttribute("stacked", "");
+        } else {
+          chart.removeAttribute("stacked");
+        }
+      });
+      const hideScaleCheckbox = document.getElementById("hide-scale");
+      hideScaleCheckbox.addEventListener("change", (event) => {
+        if (event.target.checked) {
+          chart.setAttribute("hide-scale", "");
+        } else {
+          chart.removeAttribute("hide-scale");
+        }
+      });
+      const colorInput = document.getElementById("bar-color");
+      colorInput.addEventListener("input", (event) => {
+        chart.style.setProperty("--bar-background-color", event.target.value);
+      });
+      const scaleStepsInput = document.getElementById("scale-steps");
+      scaleStepsInput.addEventListener("input", (event) => {
+        const value = parseInt(event.target.value, 10);
+        if (value >= 2 && value <= 10) {
+          chart.setAttribute("scale-steps", value);
+        } else {
+          chart.removeAttribute("scale-steps");
+        }
+      });
+    </script>
+  </body>
+</html>
