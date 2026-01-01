@@ -1,6 +1,6 @@
 {
   "name": "table-charts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A web components that converts HTML tables into accessible charts",
   "type": "module",
   "main": "./dist/table-bar-chart.js",
