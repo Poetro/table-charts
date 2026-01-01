@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.2] - 2026-01-01
+
+### Fixed
+- Update cell selection to include header cells and improve tooltip values in bar chart
+
 ## [0.0.1] - 2025-12-31
 
 ### Added
