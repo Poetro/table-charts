@@ -1,6 +1,6 @@
 # table-charts
 
-A web component that converts HTML tables into accessible bar charts.
+A web component that converts HTML tables into accessible bar charts. [Demo](https://poetro.github.io/table-charts/)
 
 ## Features
 
