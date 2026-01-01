@@ -36,8 +36,9 @@ pre {
   background: ButtonFace;
   color: ButtonText;
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   overflow: auto;
+  border: 1px inset ButtonBorder;
 }
 .site-footer {
   text-align: center;
